@@ -12,6 +12,7 @@ USER_AGENT = (
 )
 
 
+
 async def fetch_html(url: str) -> str:
     async with httpx.AsyncClient(
         timeout=settings.request_timeout_seconds,
