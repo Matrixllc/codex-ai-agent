@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article Agent V1</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Article Agent V1</p>
+          <h1>文章抓取、检索、入库，一页完成</h1>
+          <p class="lead">
+            输入文章链接后，可抓取正文、生成摘要、切分 chunk 并写入本地 Chroma。
+            也可以直接用自然语言搜索已入库内容。
+          </p>
+        </div>
+        <div class="status-card">
+          <span class="status-label">服务状态</span>
+          <strong id="healthStatus">检查中...</strong>
+          <small id="healthDetail">正在连接后端 API</small>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>写入文章</h2>
+            <p>粘贴文章 URL，点击入库。</p>
+          </div>
+          <form id="ingestForm" class="stack">
+            <label>
+              <span>文章 URL</span>
+              <input
+                id="ingestUrl"
+                type="url"
+                placeholder="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+                required
+              />
+            </label>
+            <div class="button-row">
+              <button type="button" id="fillSampleUrl" class="ghost-button">填入示例链接</button>
+              <button type="submit">开始抓取并入库</button>
+            </div>
+          </form>
+          <pre id="ingestOutput" class="output">等待输入...</pre>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>搜索知识库</h2>
+            <p>输入一个问题或关键词，查看匹配的 chunk。</p>
+          </div>
+          <form id="searchForm" class="stack">
+            <label>
+              <span>搜索内容</span>
+              <input id="searchQuery" type="text" placeholder="这篇文章在讲什么？" required />
+            </label>
+            <label>
+              <span>Top K</span>
+              <input id="searchTopK" type="number" min="1" max="20" value="5" />
+            </label>
+            <button type="submit">搜索</button>
+          </form>
+          <div id="searchOutput" class="results"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

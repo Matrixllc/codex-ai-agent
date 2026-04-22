@@ -1,0 +1,288 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --bg2: #0d1b2f;
+  --panel: rgba(10, 20, 35, 0.82);
+  --panel-border: rgba(122, 162, 255, 0.18);
+  --text: #e8eefc;
+  --muted: #93a4c3;
+  --accent: #7dd3fc;
+  --accent-2: #a78bfa;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 252, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(167, 139, 250, 0.18), transparent 26%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+body {
+  position: relative;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.lead {
+  max-width: 60ch;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.status-card,
+.panel {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.status-card {
+  border-radius: 22px;
+  padding: 20px;
+}
+
+.status-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+#healthStatus {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+#healthDetail {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  border-radius: 24px;
+  padding: 22px;
+}
+
+.panel-head h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.panel-head p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button-row button {
+  flex: 1 1 180px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+}
+
+label span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+button {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  font: inherit;
+}
+
+input {
+  width: 100%;
+  padding: 14px 15px;
+  background: rgba(5, 10, 20, 0.7);
+  color: var(--text);
+  outline: none;
+}
+
+input:focus {
+  border-color: rgba(125, 211, 252, 0.75);
+  box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.12);
+}
+
+button {
+  padding: 13px 16px;
+  border: 0;
+  cursor: pointer;
+  color: #04111f;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), #c4b5fd);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.ghost-button {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.ghost-button:hover {
+  filter: brightness(1.08);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+}
+
+.output,
+.results {
+  margin-top: 16px;
+  min-height: 120px;
+  border-radius: 18px;
+  background: rgba(5, 10, 20, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.output {
+  padding: 16px;
+  white-space: pre-wrap;
+  overflow: auto;
+  color: #d7e1f5;
+}
+
+.results {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.result-card {
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+}
+
+.result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-bottom: 8px;
+}
+
+.result-score {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.result-title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.result-text {
+  margin: 0;
+  color: #dce6fb;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 8px 2px;
+}
+
+@media (max-width: 920px) {
+  .hero,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 24px;
+  }
+
+  .panel,
+  .status-card {
+    border-radius: 18px;
+  }
+}

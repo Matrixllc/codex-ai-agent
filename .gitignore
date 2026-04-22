@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+
+data/chroma/*
+!data/chroma/.gitkeep
+
+knowledge_base/articles/*
+!knowledge_base/articles/.gitkeep
